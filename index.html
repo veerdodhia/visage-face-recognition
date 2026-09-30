@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visage — face recognition that runs on your own devices</title>
+  <meta name="description" content="Visage recognises enrolled people from a webcam or a photo, on the device in front of them. Attendance, access control, KYC and visitor management with no biometric image leaving the building.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314212B'/%3E%3Cpath d='M8 8h5M8 8v5M24 8h-5M24 8v5M8 24h5M8 24v-5M24 24h-5M24 24v-5' stroke='%237C8BFF' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='13' cy='15' r='1.5' fill='%23fff'/%3E%3Ccircle cx='19' cy='15' r='1.5' fill='%23fff'/%3E%3Cpath d='M13 20q3 2 6 0' stroke='%23fff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&display=swap">
+  <link rel="stylesheet" href="styles.css?v=1.3.2">
+</head>
+<body>
+
+<a class="skip" href="#demo">Skip to the demo</a>
+
+<header class="site-head">
+  <a class="brand" href="#top" aria-label="Visage, home">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M8 8h5M8 8v5M24 8h-5M24 8v5M8 24h5M8 24v-5M24 24h-5M24 24v-5" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="13" cy="15" r="1.5" fill="currentColor"/><circle cx="19" cy="15" r="1.5" fill="currentColor"/>
+      <path d="M13 20q3 2 6 0" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    Visage
+  </a>
+  <nav class="site-nav" aria-label="Page sections">
+    <a href="#demo">Demo</a>
+    <a href="#how">How it works</a>
+    <a href="#uses">Uses</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#stack">Stack</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- ============================================================ HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <h1 id="hero-title">Face recognition that runs on your own devices.</h1>
+      <p class="lede">Visage recognises the people you have enrolled from a webcam or a photo, on the machine in front of them. No biometric image leaves the building: the browser turns each face into 128 numbers and matches those, and keeps the numbers, never the photo.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#demo">Try the live demo</a>
+        <a class="btn btn-quiet" href="#how">See how it works</a>
+      </div>
+      <dl class="hero-facts">
+        <div><dt>Descriptor</dt><dd>128 numbers per face</dd></div>
+        <div><dt>Alignment</dt><dd>68 facial landmarks</dd></div>
+        <div><dt>Match rule</dt><dd>Euclidean distance under 0.55</dd></div>
+      </dl>
+    </div>
+
+    <!-- The hero image is the product's own output: a detection box, the 68
+         landmarks the aligner finds, and the label the demo would show before
+         anyone is enrolled. Nothing here is a stock illustration. -->
+    <figure class="hero-art" aria-label="A face rendered as 68 landmark points inside a detection box">
+      <svg viewBox="0 0 400 460" role="img" aria-hidden="true">
+        <g class="det-box" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M28 130h34M28 130v34M372 130h-34M372 130v34M28 420h34M28 420v-34M372 420h-34M372 420v-34"/>
+        </g>
+        <g class="det-label">
+          <rect x="28" y="92" width="150" height="30" rx="3"/>
+          <text x="40" y="112">Unknown · neutral</text>
+        </g>
+        <g class="landmarks" fill="currentColor">
+          <circle style="--i:1" cx="50" cy="185" r="3"/><circle style="--i:2" cx="53" cy="216" r="3"/><circle style="--i:3" cx="61" cy="253" r="3"/><circle style="--i:4" cx="75" cy="289" r="3"/><circle style="--i:5" cx="94" cy="323" r="3"/><circle style="--i:6" cx="117" cy="351" r="3"/><circle style="--i:7" cx="143" cy="372" r="3"/><circle style="--i:8" cx="171" cy="385" r="3"/><circle style="--i:9" cx="200" cy="390" r="3"/><circle style="--i:10" cx="229" cy="385" r="3"/><circle style="--i:11" cx="257" cy="372" r="3"/><circle style="--i:12" cx="283" cy="351" r="3"/><circle style="--i:13" cx="306" cy="323" r="3"/><circle style="--i:14" cx="325" cy="289" r="3"/><circle style="--i:15" cx="339" cy="253" r="3"/><circle style="--i:16" cx="347" cy="216" r="3"/><circle style="--i:17" cx="350" cy="185" r="3"/>
+          <circle style="--i:18" cx="65" cy="140" r="3"/><circle style="--i:19" cx="90" cy="134" r="3"/><circle style="--i:20" cx="115" cy="132" r="3"/><circle style="--i:21" cx="140" cy="134" r="3"/><circle style="--i:22" cx="165" cy="140" r="3"/><circle style="--i:23" cx="235" cy="140" r="3"/><circle style="--i:24" cx="260" cy="134" r="3"/><circle style="--i:25" cx="285" cy="132" r="3"/><circle style="--i:26" cx="310" cy="134" r="3"/><circle style="--i:27" cx="335" cy="140" r="3"/>
+          <circle style="--i:28" cx="200" cy="168" r="3"/><circle style="--i:29" cx="200" cy="190" r="3"/><circle style="--i:30" cx="200" cy="212" r="3"/><circle style="--i:31" cx="200" cy="234" r="3"/><circle style="--i:32" cx="170" cy="256" r="3"/><circle style="--i:33" cx="185" cy="259" r="3"/><circle style="--i:34" cx="200" cy="268" r="3"/><circle style="--i:35" cx="215" cy="259" r="3"/><circle style="--i:36" cx="230" cy="256" r="3"/>
+          <circle style="--i:37" cx="98" cy="180" r="3"/><circle style="--i:38" cx="113" cy="170" r="3"/><circle style="--i:39" cx="143" cy="170" r="3"/><circle style="--i:40" cx="158" cy="180" r="3"/><circle style="--i:41" cx="143" cy="189" r="3"/><circle style="--i:42" cx="113" cy="189" r="3"/><circle style="--i:43" cx="242" cy="180" r="3"/><circle style="--i:44" cx="257" cy="170" r="3"/><circle style="--i:45" cx="287" cy="170" r="3"/><circle style="--i:46" cx="302" cy="180" r="3"/><circle style="--i:47" cx="287" cy="189" r="3"/><circle style="--i:48" cx="257" cy="189" r="3"/>
+          <circle style="--i:49" cx="150" cy="318" r="3"/><circle style="--i:50" cx="157" cy="312" r="3"/><circle style="--i:51" cx="175" cy="308" r="3"/><circle style="--i:52" cx="200" cy="306" r="3"/><circle style="--i:53" cx="225" cy="308" r="3"/><circle style="--i:54" cx="243" cy="312" r="3"/><circle style="--i:55" cx="250" cy="318" r="3"/><circle style="--i:56" cx="243" cy="326" r="3"/><circle style="--i:57" cx="225" cy="332" r="3"/><circle style="--i:58" cx="200" cy="334" r="3"/><circle style="--i:59" cx="175" cy="332" r="3"/><circle style="--i:60" cx="157" cy="326" r="3"/><circle style="--i:61" cx="164" cy="318" r="3"/><circle style="--i:62" cx="175" cy="314" r="3"/><circle style="--i:63" cx="200" cy="313" r="3"/><circle style="--i:64" cx="225" cy="314" r="3"/><circle style="--i:65" cx="236" cy="318" r="3"/><circle style="--i:66" cx="225" cy="322" r="3"/><circle style="--i:67" cx="200" cy="323" r="3"/><circle style="--i:68" cx="175" cy="322" r="3"/>
+        </g>
+      </svg>
+      <figcaption>What the aligner sees: 68 points, then a 128-number descriptor.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============================================================ DEMO -->
+  <section class="demo" id="demo" aria-labelledby="demo-title">
+    <div class="demo-inner">
+      <header class="demo-head">
+        <h2 id="demo-title">Live demo</h2>
+        <p>Start your camera or pick a photo. Enrol yourself by name and the box turns from amber to blue when Visage recognises you. Every frame is processed in this tab; no photo leaves this device.</p>
+      </header>
+
+      <div class="demo-grid">
+        <!-- ---------- Stage: video / photo + overlay canvas ---------- -->
+        <div class="stage-col">
+          <div class="stage" id="stage" data-mode="idle">
+            <video id="video" playsinline muted aria-label="Live camera feed"></video>
+            <img id="photo" alt="">
+            <canvas id="overlay" aria-hidden="true"></canvas>
+            <div class="stage-empty" id="stage-empty">
+              <p id="stage-empty-text">Loading the recognition models…</p>
+            </div>
+            <output class="stage-status" id="stage-status" aria-live="polite">Loading models</output>
+          </div>
+
+          <div class="stage-actions">
+            <button class="btn btn-primary" id="btn-camera" type="button" disabled>Start camera</button>
+            <button class="btn btn-quiet" id="btn-stop" type="button" hidden>Stop camera</button>
+            <label class="btn btn-quiet file-btn">
+              <input type="file" id="file-recognise" accept="image/*" title="Choose a photo to recognise" disabled>
+              Recognise in a photo
+            </label>
+            <label class="check">
+              <input type="checkbox" id="chk-landmarks"> Show landmarks
+            </label>
+          </div>
+          <p class="stage-msg" id="stage-msg" role="status" aria-live="polite"></p>
+
+        </div>
+
+        <!-- ---------- Enrol panel ---------- -->
+        <div class="panel-col">
+          <form class="enrol" id="enrol-form" autocomplete="off">
+            <h3>Enrol a person</h3>
+            <label for="enrol-name">Name</label>
+            <input id="enrol-name" name="name" type="text" placeholder="e.g. Aarav" maxlength="40" required>
+            <div class="enrol-actions">
+              <button class="btn btn-primary" id="btn-enrol-camera" type="submit" disabled>Enrol from camera</button>
+              <label class="btn btn-quiet file-btn">
+                <input type="file" id="file-enrol" accept="image/*" title="Choose a photo to enrol" disabled>
+                Enrol from a photo
+              </label>
+            </div>
+            <p class="hint">One face in frame. Enrol each person 2–3 times from slightly different angles; every enrolment adds a sample and the matcher keeps the closest.</p>
+            <p class="msg" id="enrol-msg" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="threshold">
+            <label for="threshold">Match threshold <output id="threshold-val" for="threshold">0.55</output></label>
+            <input id="threshold" type="range" min="0.35" max="0.75" step="0.01" value="0.55">
+            <p class="hint">Lower is stricter: fewer false matches, more “Unknown”. Higher is looser: forgiving of lighting and angle, but strangers may be matched.</p>
+          </div>
+
+          <div class="people">
+            <div class="people-head">
+              <h3>Enrolled people</h3>
+              <span id="people-count">0</span>
+            </div>
+            <ul id="people-list" aria-live="polite"></ul>
+            <p class="empty" id="people-empty">Nobody enrolled yet, so everyone in frame shows as Unknown.</p>
+            <p class="msg" id="people-msg" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <!-- "Under the hood": what the engine just did, fed from FaceEngine.lastRun()
+             after every analysis. This is the panel to point at during a viva. -->
+        <section class="hood" aria-labelledby="hood-title">
+          <div class="hood-head">
+            <h3 id="hood-title">Under the hood</h3>
+            <p>What the last analysis did.</p>
+          </div>
+          <dl class="hood-stats">
+            <div><dt>Inference time</dt><dd><span id="hood-ms">–</span> ms</dd></div>
+            <div><dt>Faces in frame</dt><dd id="hood-faces">–</dd></div>
+            <div><dt>Descriptor</dt><dd>128 numbers</dd></div>
+            <div><dt>Detector input</dt><dd id="hood-size">–</dd></div>
+          </dl>
+          <ol class="hood-faces" id="hood-list" aria-live="polite"></ol>
+          <p class="hood-empty" id="hood-empty">Each face will show its nearest enrolled person and the distance between them, next to the threshold. Below the threshold is a match; above it is Unknown.</p>
+        </section>
+      </div>
+
+      <!-- ---------- Recognition log ---------- -->
+      <div class="log">
+        <div class="log-head">
+          <h3>Recognition log</h3>
+          <span class="hint">Newest first, last 50 events</span>
+        </div>
+        <ol id="log-list" aria-live="polite" aria-relevant="additions"></ol>
+        <p class="empty" id="log-empty">No recognitions yet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ HOW -->
+  <section class="how" id="how" aria-labelledby="how-title">
+    <h2 id="how-title">How it works</h2>
+    <p class="section-lede">Four networks run in sequence on every frame. Each one hands a smaller, more precise piece of data to the next.</p>
+    <ol class="steps">
+      <li>
+        <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M14 14h14M14 14v14M66 14H52M66 14v14M14 66h14M14 66V52M66 66H52M66 66V52" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="30" y="30" width="20" height="20" rx="2" fill="currentColor" opacity=".25"/></svg>
+        <h3>Detect</h3>
+        <p>The Tiny Face Detector, a small convolutional network, scans the frame and returns a bounding box and a confidence score for every face it finds.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 80 80" aria-hidden="true"><g fill="currentColor"><circle cx="22" cy="30" r="3"/><circle cx="32" cy="27" r="3"/><circle cx="48" cy="27" r="3"/><circle cx="58" cy="30" r="3"/><circle cx="40" cy="42" r="3"/><circle cx="28" cy="56" r="3"/><circle cx="40" cy="59" r="3"/><circle cx="52" cy="56" r="3"/><circle cx="18" cy="44" r="3"/><circle cx="62" cy="44" r="3"/></g></svg>
+        <h3>Align</h3>
+        <p>A landmark network places 68 points on eyes, brows, nose, mouth and jaw. Those points normalise the crop for tilt and position, so the next step always sees a face in the same pose.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 80 80" aria-hidden="true"><g fill="currentColor"><rect x="12" y="44" width="5" height="22"/><rect x="20" y="30" width="5" height="36"/><rect x="28" y="50" width="5" height="16"/><rect x="36" y="22" width="5" height="44"/><rect x="44" y="38" width="5" height="28"/><rect x="52" y="14" width="5" height="52"/><rect x="60" y="46" width="5" height="20"/></g></svg>
+        <h3>Embed</h3>
+        <p>A ResNet-34 style network turns the aligned face into a 128-dimensional descriptor. Faces of the same person land close together in that space; different people land far apart.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M12 40h56M20 34v12M36 34v12M52 34v12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="28" cy="40" r="5" fill="currentColor"/><circle cx="60" cy="40" r="5" fill="currentColor" opacity=".35"/></svg>
+        <h3>Match</h3>
+        <p>The live descriptor is compared with every enrolled descriptor using Euclidean distance. The closest one wins if its distance is below the threshold (0.55 by default); otherwise the face is Unknown.</p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============================================================ USES -->
+  <section class="uses" id="uses" aria-labelledby="uses-title">
+    <h2 id="uses-title">Where it fits in an organisation</h2>
+    <p class="section-lede">Anywhere a person has to be recognised at a fixed point: a door, a desk, a counter, an onboarding screen. The device already there does the work.</p>
+    <dl class="uses-list">
+      <div>
+        <dt>Attendance</dt>
+        <dd>Enrol staff or students once. A laptop or tablet at the entrance recognises each person as they arrive and records a timestamp, with no card to forget and no register to sign.</dd>
+      </div>
+      <div>
+        <dt>Access control</dt>
+        <dd>A lab, server room or office door checks a face against a short enrolled list and refuses everyone else. The list lives on the device guarding the door, not in a cloud account.</dd>
+      </div>
+      <div>
+        <dt>KYC and identity verification</dt>
+        <dd>Compare a live face with the photo on an ID document during onboarding. The distance between the two descriptors is the evidence, and it is computed on the branch device, so the customer's face is never uploaded.</dd>
+      </div>
+      <div>
+        <dt>Visitor management</dt>
+        <dd>Enrol a visitor at reception for the day. Front-desk and floor devices recognise them on return without re-checking ID, and Remove clears them when the visit ends.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ============================================================ PRIVACY -->
+  <section class="privacy" id="privacy" aria-labelledby="privacy-title">
+    <div class="privacy-inner">
+      <h2 id="privacy-title">No biometric image leaves the building</h2>
+      <p class="section-lede">Privacy here is how the system is built, not a policy. Each point below is something a security or compliance review can verify in the code.</p>
+      <ul class="privacy-list">
+        <li><strong>Everything runs on the device in front of the person.</strong> The models are loaded from the site folder and executed by TensorFlow.js in the browser. There is no server to send frames to, and nothing for you to host.</li>
+        <li><strong>Descriptors, never photos.</strong> Enrolling a person stores 128 numbers. The image is discarded as soon as those numbers are computed, and a descriptor cannot be turned back into a face.</li>
+        <li><strong>Stored on that device only.</strong> Enrolments live in the browser's localStorage. Nothing syncs anywhere on its own.</li>
+        <li><strong>Removable, any time.</strong> Every enrolled person has a Remove button, so a visitor's data ends with the visit.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ STACK -->
+  <section class="stack" id="stack" aria-labelledby="stack-title">
+    <h2 id="stack-title">What it is made of</h2>
+    <table class="stack-table">
+      <tbody>
+        <tr><th scope="row">Recognition</th><td>face-api.js, running on TensorFlow.js in the browser</td></tr>
+        <tr><th scope="row">Models</th><td>Tiny Face Detector, 68-point tiny landmark net, ResNet-34 style recognition net, expression net. Weight files are vendored in <code>models/</code>.</td></tr>
+        <tr><th scope="row">Site</th><td>Plain HTML, CSS and JavaScript. No build step, no framework, no backend.</td></tr>
+        <tr><th scope="row">Storage</th><td>Browser localStorage, descriptors only</td></tr>
+        <tr><th scope="row">Runs from</th><td>Any static server: VS Code Live Server or <code>python -m http.server</code>. Works offline once the folder is on disk.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <p><strong>Visage</strong> · Final-year project · 2026</p>
+  <p>Veer Dodhia · BBA · S.K. Somaiya</p>
+  <p>Facial Recognition Website. Built with face-api.js and vanilla web technologies.</p>
+</footer>
+
+<script src="vendor/face-api.min.js?v=1.3.2"></script>
+<script src="engine/face-engine.js?v=1.3.2"></script>
+<script src="app.js?v=1.3.2"></script>
+</body>
+</html>
